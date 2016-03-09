@@ -49,6 +49,7 @@
     <Reference Include="System" />
     <Reference Include="System.ComponentModel.DataAnnotations" />
     <Reference Include="System.Core" />
+    <Reference Include="System.Transactions" />
     <Reference Include="System.Xml.Linq" />
     <Reference Include="System.Data.DataSetExtensions" />
     <Reference Include="Microsoft.CSharp" />
@@ -57,9 +58,24 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="EntityFramework\Configurations\CustomerConfiguration.cs" />
+    <Compile Include="EntityFramework\Configurations\EntityBaseConfiguration.cs" />
+    <Compile Include="EntityFramework\Configurations\GenreConfiguration.cs" />
+    <Compile Include="EntityFramework\Configurations\MovieConfiguration.cs" />
+    <Compile Include="EntityFramework\Configurations\RentalConfiguration.cs" />
+    <Compile Include="EntityFramework\Configurations\RoleConfiguration.cs" />
+    <Compile Include="EntityFramework\Configurations\StockConfiguration.cs" />
+    <Compile Include="EntityFramework\Configurations\UserConfiguration.cs" />
+    <Compile Include="EntityFramework\DefaultDbContextProvider.cs" />
     <Compile Include="EntityFramework\IDbContextProvider.cs" />
     <Compile Include="EntityFramework\JYSpaCinemaDbContext.cs" />
     <Compile Include="EntityFramework\Repositories\EFBaseRepository.cs" />
+    <Compile Include="EntityFramework\Uow\EFUnitOfWork.cs" />
+    <Compile Include="Migrations\201603091019494_Initial.cs" />
+    <Compile Include="Migrations\201603091019494_Initial.Designer.cs">
+      <DependentUpon>201603091019494_Initial.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>
@@ -78,7 +94,11 @@
       <SubType>Designer</SubType>
     </None>
   </ItemGroup>
-  <ItemGroup />
+  <ItemGroup>
+    <EmbeddedResource Include="Migrations\201603091019494_Initial.resx">
+      <DependentUpon>201603091019494_Initial.cs</DependentUpon>
+    </EmbeddedResource>
+  </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
        Other similar extension points exist, see Microsoft.Common.targets.

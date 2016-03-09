@@ -11,5 +11,7 @@ namespace JYSpaCinema.Domain.Entities
         public int ID { get; set; }
 
         public string Name { get; set; }
+
+        public virtual ICollection<User> Users { get; set; }
     }
 }

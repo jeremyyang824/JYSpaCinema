@@ -16,13 +16,7 @@ namespace JYSpaCinema.Infrastructure.EntityFramework.Repositories
     {
         private readonly IDbContextProvider<TDbContext> _dbContextProvider;  //DbContext工厂
 
-        protected virtual DbContext Context
-        {
-            get
-            {
-                return this._dbContextProvider.DbContext;
-            }
-        }
+        protected virtual DbContext Context => this._dbContextProvider.DbContext;
 
         public EFBaseRepository(IDbContextProvider<TDbContext> dbContextProvider)
         {

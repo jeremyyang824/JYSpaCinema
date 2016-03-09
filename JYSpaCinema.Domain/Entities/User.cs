@@ -25,6 +25,6 @@ namespace JYSpaCinema.Domain.Entities
 
         public DateTime DateCreated { get; set; }
 
-        public virtual ICollection<UserRole> UserRoles { get; set; }
+        public virtual ICollection<Role> Roles { get; set; }
     }
 }
