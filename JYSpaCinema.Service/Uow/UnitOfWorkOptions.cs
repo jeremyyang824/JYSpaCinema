@@ -20,5 +20,10 @@ namespace JYSpaCinema.Service.Uow
             this.Timeout = new TimeSpan(0, 1, 0);
             this.IsolationLevel = System.Transactions.IsolationLevel.ReadCommitted;
         }
+
+        public static UnitOfWorkOptions Default
+        {
+            get { return new UnitOfWorkOptions(); }
+        }
     }
 }
