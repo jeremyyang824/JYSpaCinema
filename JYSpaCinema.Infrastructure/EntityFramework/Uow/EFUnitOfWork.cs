@@ -21,7 +21,10 @@ namespace JYSpaCinema.Infrastructure.EntityFramework.Uow
         private readonly IDbContextProvider<TDbContext> _dbContextProvider;
 
         protected TransactionScope CurrentTransaction;
-        protected DbContext DbContext => this._dbContextProvider.DbContext;
+        protected DbContext DbContext
+        {
+            get { return this._dbContextProvider.DbContext; }
+        }
 
         public string Id { get; private set; }
         public bool IsDisposed { get; private set; }
@@ -36,7 +39,7 @@ namespace JYSpaCinema.Infrastructure.EntityFramework.Uow
         public void Begin(UnitOfWorkOptions options)
         {
             if (options == null)
-                throw new ArgumentNullException(nameof(options));
+                throw new ArgumentNullException("options");
 
             if (this._isBeginCalledBefore)
                 throw new InvalidOperationException("This unit of work has started before.");
@@ -58,9 +61,11 @@ namespace JYSpaCinema.Infrastructure.EntityFramework.Uow
                 this._isCompleteCalledBefore = true;
 
                 //Core Process
-                this.DbContext?.SaveChanges();
+                if (this.DbContext != null)
+                    this.DbContext.SaveChanges();
 
-                this.CurrentTransaction?.Complete();
+                if (this.CurrentTransaction != null)
+                    this.CurrentTransaction.Complete();
 
                 //TODO：OnSuccess
             }
@@ -78,9 +83,11 @@ namespace JYSpaCinema.Infrastructure.EntityFramework.Uow
 
             this.IsDisposed = true;
 
-            this.DbContext?.Dispose();
+            if (this.DbContext != null)
+                this.DbContext.Dispose();
 
-            this.CurrentTransaction?.Dispose();
+            if (this.CurrentTransaction != null)
+                this.CurrentTransaction.Dispose();
         }
 
     }

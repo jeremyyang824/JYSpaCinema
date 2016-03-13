@@ -26,7 +26,8 @@ namespace JYSpaCinema.Infrastructure.EntityFramework
         {
             if (!_isDisposed && disposing)
             {
-                this.DbContext?.Dispose();
+                if (this.DbContext != null)
+                    this.DbContext.Dispose();
             }
             _isDisposed = true;
         }
