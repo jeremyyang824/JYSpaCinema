@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using JYSpaCinema.Domain.Entities;
 using JYSpaCinema.Domain.Services;
 using JYSpaCinema.Domain.ValueObjects;
 using JYSpaCinema.Service.Uow;
@@ -24,6 +25,19 @@ namespace JYSpaCinema.Service.AppServices
         {
             MembershipContext userContext = this._membershipService.ValidateUser(loginDto.Username, loginDto.Password);
             return userContext.User != null;
+        }
+
+        public bool Register(RegistrationInputDto registrationDto)
+        {
+            //this._unitOfWork.Begin(UnitOfWorkOptions.Default);
+
+            User user = this._membershipService.CreateUser(registrationDto.Username, registrationDto.Email, registrationDto.Password);
+            //this._unitOfWork.Commit();
+            this._membershipService.AddRoles(user, new int[] { 1 });
+
+            this._unitOfWork.Commit();
+
+            return user != null;
         }
     }
 }

@@ -4,7 +4,7 @@ namespace JYSpaCinema.Service.AppServices
 {
     public abstract class BaseAppService
     {
-        private readonly IUnitOfWork _unitOfWork;
+        protected readonly IUnitOfWork _unitOfWork;
 
         protected BaseAppService(IUnitOfWork unitOfWork)
         {

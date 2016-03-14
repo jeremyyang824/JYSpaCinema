@@ -37,9 +37,9 @@ namespace JYSpaCinema.Infrastructure.Migrations
             context.UserSet.AddOrUpdate(u => u.Email, new User[]{
                 new User()
                 {
-                    Email="chsakells.blog@gmail.com",
-                    UserName="chsakell",
-                    HashedPassword ="XwAQoiq84p1RUzhAyPfaMDKVgSwnn80NCtsE8dNv3XI=",
+                    Email="admin.blog@gmail.com",
+                    UserName="admin",
+                    HashedPassword ="TlIbf/0Tvl6oTpyCmX5mCSNUTPiXjxrNBaqwwhZv30M=",
                     Salt = "mNKLRbEFCH8y1xIyTXP4qA==",
                     IsLocked = false,
                     DateCreated = DateTime.Now,

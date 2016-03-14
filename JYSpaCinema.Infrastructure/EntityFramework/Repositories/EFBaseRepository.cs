@@ -9,19 +9,18 @@ using JYSpaCinema.Domain.Repositories;
 
 namespace JYSpaCinema.Infrastructure.EntityFramework.Repositories
 {
-    public class EFBaseRepository<TDbContext, TEntity, TKey> : IRepository<TEntity, TKey>
-        where TDbContext : DbContext
+    public class EFBaseRepository<TEntity, TKey> : IRepository<TEntity, TKey>
         where TEntity : class, IEntityBase<TKey>
         where TKey : struct
     {
-        private readonly IDbContextProvider<TDbContext> _dbContextProvider;  //DbContext工厂
+        private readonly IDbContextProvider<DbContext> _dbContextProvider;  //DbContext工厂
 
         protected virtual DbContext Context
         {
             get { return this._dbContextProvider.DbContext; }
         }
 
-        public EFBaseRepository(IDbContextProvider<TDbContext> dbContextProvider)
+        public EFBaseRepository(IDbContextProvider<DbContext> dbContextProvider)
         {
             this._dbContextProvider = dbContextProvider;
         }
@@ -49,7 +48,7 @@ namespace JYSpaCinema.Infrastructure.EntityFramework.Repositories
 
         public TEntity GetByKey(TKey id)
         {
-            return Context.Set<TEntity>().FirstOrDefault(e => e.ID.Equals(id));
+            return Context.Set<TEntity>().Find(id);
         }
 
         public IQueryable<TEntity> GetAll(params Expression<Func<TEntity, object>>[] eager)

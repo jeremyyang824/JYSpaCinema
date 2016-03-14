@@ -11,6 +11,7 @@ namespace JYSpaCinema.Domain.Services
     public interface IMembershipService
     {
         MembershipContext ValidateUser(string username, string password);
-        User CreateUser(string username, string email, string password, int[] roles);
+        User CreateUser(string username, string email, string password);
+        void AddRoles(User user, int[] roles);
     }
 }

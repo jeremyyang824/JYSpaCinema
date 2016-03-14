@@ -47,12 +47,14 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="AppServices\AccountAppService.cs" />
+    <Compile Include="DTO\RegistrationInputDto.cs" />
     <Compile Include="Uow\IUnitOfWork.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Uow\UnitOfWorkOptions.cs" />
     <Compile Include="Validators\LoginInputDtoValidator.cs" />
     <Compile Include="AppServices\BaseAppService.cs" />
     <Compile Include="DTO\LoginInputDto.cs" />
+    <Compile Include="Validators\RegistrationInputDtoValidator.cs" />
   </ItemGroup>
   <ItemGroup>
     <ProjectReference Include="..\JYSpaCinema.Domain\JYSpaCinema.Domain.csproj">

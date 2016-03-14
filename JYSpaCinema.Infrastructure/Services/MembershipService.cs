@@ -30,7 +30,7 @@ namespace JYSpaCinema.Infrastructure.Services
             this._encryptionService = encryptionService;
         }
 
-        public User CreateUser(string username, string email, string password, int[] roles)
+        public User CreateUser(string username, string email, string password)
         {
             var existingUser = this._userRepository.GetSingleByUsername(username);
             if (existingUser != null)
@@ -47,6 +47,13 @@ namespace JYSpaCinema.Infrastructure.Services
                 DateCreated = DateTime.Now
             };
             this._userRepository.Add(user);
+            return user;
+        }
+
+        public void AddRoles(User user, int[] roles)
+        {
+            if (user == null)
+                throw new ArgumentNullException("user");
 
             if (roles != null && roles.Length > 0)
             {
@@ -56,8 +63,6 @@ namespace JYSpaCinema.Infrastructure.Services
                 }
             }
             this._userRepository.Update(user);
-
-            return user;
         }
 
         public MembershipContext ValidateUser(string username, string password)

@@ -56,9 +56,9 @@ namespace JYSpaCinema.Infrastructure.EntityFramework.Uow
         {
             try
             {
-                if (this._isCompleteCalledBefore)
-                    throw new InvalidOperationException("Complete is called before!");
-                this._isCompleteCalledBefore = true;
+                //if (this._isCompleteCalledBefore)
+                //    throw new InvalidOperationException("Complete is called before!");
+                //this._isCompleteCalledBefore = true;
 
                 //Core Process
                 if (this.DbContext != null)

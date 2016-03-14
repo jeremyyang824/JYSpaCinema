@@ -46,11 +46,11 @@ namespace JYSpaCinema.Web.App_Start
                 .As(typeof(IDbContextProvider<>))
                 .InstancePerRequest();
 
-            builder.RegisterGeneric(typeof(EFBaseRepository<,,>))
+            builder.RegisterGeneric(typeof(EFBaseRepository<,>))
                 .As(typeof(IRepository<,>))
                 .InstancePerRequest();
 
-            builder.RegisterType(typeof(EFUnitOfWork<>))
+            builder.RegisterType(typeof(EFUnitOfWork<DbContext>))
                 .As(typeof(IUnitOfWork))
                 .InstancePerRequest();
 
