@@ -32,9 +32,9 @@ namespace JYSpaCinema.Service.AppServices
             //this._unitOfWork.Begin(UnitOfWorkOptions.Default);
 
             User user = this._membershipService.CreateUser(registrationDto.Username, registrationDto.Email, registrationDto.Password);
-            //this._unitOfWork.Commit();
-            this._membershipService.AddRoles(user, new int[] { 1 });
+            this._unitOfWork.Commit();
 
+            this._membershipService.AddRoles(user, new int[] { 1 });
             this._unitOfWork.Commit();
 
             return user != null;
