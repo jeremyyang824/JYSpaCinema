@@ -72,6 +72,9 @@
       <HintPath>..\packages\FluentValidation.6.2.1.0\lib\Net45\FluentValidation.dll</HintPath>
       <Private>True</Private>
     </Reference>
+    <Reference Include="HibernatingRhinos.Profiler.Appender">
+      <HintPath>..\packages\HibernatingRhinos.Profiler.Appender.dll</HintPath>
+    </Reference>
     <Reference Include="Microsoft.CodeDom.Providers.DotNetCompilerPlatform, Version=1.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
       <HintPath>..\packages\Microsoft.CodeDom.Providers.DotNetCompilerPlatform.1.0.1\lib\net45\Microsoft.CodeDom.Providers.DotNetCompilerPlatform.dll</HintPath>
       <Private>True</Private>
@@ -149,8 +152,113 @@
     </Reference>
   </ItemGroup>
   <ItemGroup>
+    <Content Include="Content\css\site.css" />
+    <Content Include="Content\Site.css" />
+    <Content Include="Content\vendors\angucomplete-alt\angucomplete-alt.min.js" />
+    <Content Include="Content\vendors\angular-base64\angular-base64.js" />
+    <Content Include="Content\vendors\angular-base64\angular-base64.min.js" />
+    <Content Include="Content\vendors\angular-bootstrap\ui-bootstrap-csp.css" />
+    <Content Include="Content\vendors\angular-bootstrap\ui-bootstrap-tpls.js" />
+    <Content Include="Content\vendors\angular-bootstrap\ui-bootstrap-tpls.min.js" />
+    <Content Include="Content\vendors\angular-bootstrap\ui-bootstrap.js" />
+    <Content Include="Content\vendors\angular-bootstrap\ui-bootstrap.min.js" />
+    <Content Include="Content\vendors\angular-cookies\angular-cookies.js" />
+    <Content Include="Content\vendors\angular-cookies\angular-cookies.min.js" />
+    <Content Include="Content\vendors\angular-file-upload\angular-file-upload.js" />
+    <Content Include="Content\vendors\angular-file-upload\angular-file-upload.min.js" />
+    <Content Include="Content\vendors\angular-loading-bar\loading-bar.css" />
+    <Content Include="Content\vendors\angular-loading-bar\loading-bar.js" />
+    <Content Include="Content\vendors\angular-loading-bar\loading-bar.min.css" />
+    <Content Include="Content\vendors\angular-loading-bar\loading-bar.min.js" />
+    <Content Include="Content\vendors\angular-mocks\angular-mocks.js" />
+    <Content Include="Content\vendors\angular-mocks\ngAnimateMock.js" />
+    <Content Include="Content\vendors\angular-mocks\ngMock.js" />
+    <Content Include="Content\vendors\angular-mocks\ngMockE2E.js" />
+    <Content Include="Content\vendors\angular-route\angular-route.js" />
+    <Content Include="Content\vendors\angular-route\angular-route.min.js" />
+    <Content Include="Content\vendors\angular-validator\angular-validator-rules.js" />
+    <Content Include="Content\vendors\angular-validator\angular-validator-rules.min.js" />
+    <Content Include="Content\vendors\angular-validator\angular-validator.js" />
+    <Content Include="Content\vendors\angular-validator\angular-validator.min.js" />
+    <Content Include="Content\vendors\angular\angular-csp.css" />
+    <Content Include="Content\vendors\angular\angular.js" />
+    <Content Include="Content\vendors\angular\angular.min.js" />
+    <Content Include="Content\vendors\bootstrap\css\bootstrap-theme.css" />
+    <Content Include="Content\vendors\bootstrap\css\bootstrap-theme.min.css" />
+    <Content Include="Content\vendors\bootstrap\css\bootstrap.css" />
+    <Content Include="Content\vendors\bootstrap\css\bootstrap.min.css" />
+    <Content Include="Content\vendors\bootstrap\fonts\glyphicons-halflings-regular.svg" />
+    <Content Include="Content\vendors\bootstrap\js\bootstrap.js" />
+    <Content Include="Content\vendors\bootstrap\js\bootstrap.min.js" />
+    <Content Include="Content\vendors\bootstrap\js\npm.js" />
+    <Content Include="Content\vendors\fancybox\blank.gif" />
+    <Content Include="Content\vendors\fancybox\fancybox_loading%402x.gif" />
+    <Content Include="Content\vendors\fancybox\fancybox_loading.gif" />
+    <Content Include="Content\vendors\fancybox\fancybox_overlay.png" />
+    <Content Include="Content\vendors\fancybox\fancybox_sprite%402x.png" />
+    <Content Include="Content\vendors\fancybox\fancybox_sprite.png" />
+    <Content Include="Content\vendors\fancybox\fancybox_buttons.png" />
+    <Content Include="Content\vendors\fancybox\jquery.fancybox-buttons.css" />
+    <Content Include="Content\vendors\fancybox\jquery.fancybox-buttons.js" />
+    <Content Include="Content\vendors\fancybox\jquery.fancybox-media.js" />
+    <Content Include="Content\vendors\fancybox\jquery.fancybox-thumbs.css" />
+    <Content Include="Content\vendors\fancybox\jquery.fancybox-thumbs.js" />
+    <Content Include="Content\vendors\fancybox\jquery.fancybox.css" />
+    <Content Include="Content\vendors\fancybox\jquery.fancybox.js" />
+    <Content Include="Content\vendors\fancybox\jquery.fancybox.pack.js" />
+    <Content Include="Content\vendors\font-awesome\css\font-awesome.css" />
+    <Content Include="Content\vendors\font-awesome\css\font-awesome.min.css" />
+    <Content Include="Content\vendors\font-awesome\fonts\fontawesome-webfont.svg" />
+    <Content Include="Content\vendors\jquery-raty\jquery.raty.css" />
+    <Content Include="Content\vendors\jquery-raty\jquery.raty.js" />
+    <Content Include="Content\vendors\jquery\jquery.js" />
+    <Content Include="Content\vendors\jquery\jquery.min.js" />
+    <Content Include="Content\vendors\modernizr.js" />
+    <Content Include="Content\vendors\morris\morris.css" />
+    <Content Include="Content\vendors\morris\morris.js" />
+    <Content Include="Content\vendors\raphael\raphael-min.js" />
+    <Content Include="Content\vendors\raphael\raphael.js" />
+    <Content Include="Content\vendors\respond\respond.matchmedia.addListener.min.js" />
+    <Content Include="Content\vendors\respond\respond.matchmedia.addListener.src.js" />
+    <Content Include="Content\vendors\respond\respond.min.js" />
+    <Content Include="Content\vendors\respond\respond.src.js" />
+    <Content Include="Content\vendors\toastr\toastr.css" />
+    <Content Include="Content\vendors\toastr\toastr.js" />
+    <Content Include="Content\vendors\toastr\toastr.min.css" />
+    <Content Include="Content\vendors\toastr\toastr.min.js" />
+    <Content Include="Content\vendors\underscore\underscore-min.js" />
+    <Content Include="Content\vendors\underscore\underscore.js" />
+    <Content Include="favicon.ico" />
+    <Content Include="fonts\glyphicons-halflings-regular.svg" />
     <Content Include="Global.asax" />
-    <Content Include="Web.config" />
+    <Content Include="Content\vendors\jquery\jquery.min.map" />
+    <Content Include="Content\vendors\bootstrap\css\bootstrap-theme.css.map" />
+    <Content Include="Content\vendors\bootstrap\css\bootstrap-theme.min.css.map" />
+    <Content Include="Content\vendors\bootstrap\css\bootstrap.css.map" />
+    <Content Include="Content\vendors\bootstrap\css\bootstrap.min.css.map" />
+    <Content Include="Content\vendors\bootstrap\fonts\glyphicons-halflings-regular.eot" />
+    <Content Include="Content\vendors\bootstrap\fonts\glyphicons-halflings-regular.ttf" />
+    <Content Include="Content\vendors\bootstrap\fonts\glyphicons-halflings-regular.woff" />
+    <Content Include="Content\vendors\bootstrap\fonts\glyphicons-halflings-regular.woff2" />
+    <Content Include="Content\vendors\font-awesome\css\font-awesome.css.map" />
+    <Content Include="Content\vendors\font-awesome\fonts\fontawesome-webfont.eot" />
+    <Content Include="Content\vendors\font-awesome\fonts\fontawesome-webfont.ttf" />
+    <Content Include="Content\vendors\font-awesome\fonts\fontawesome-webfont.woff" />
+    <Content Include="Content\vendors\font-awesome\fonts\fontawesome-webfont.woff2" />
+    <Content Include="Content\vendors\font-awesome\fonts\FontAwesome.otf" />
+    <Content Include="Content\vendors\toastr\toastr.js.map" />
+    <Content Include="Scripts\spa\app.js" />
+    <Content Include="Scripts\spa\home\index.html" />
+    <Content Include="Scripts\spa\home\indexCtrl.js" />
+    <Content Include="Scripts\spa\home\rootCtrl.js" />
+    <Content Include="Scripts\spa\layout\sideBar.directive.js" />
+    <Content Include="Scripts\spa\layout\sideBar.html" />
+    <Content Include="Scripts\spa\modules\common.core.js" />
+    <None Include="Scripts\_references.js" />
+    <Content Include="Scripts\spa\modules\common.ui.js" />
+    <Content Include="Web.config">
+      <SubType>Designer</SubType>
+    </Content>
   </ItemGroup>
   <ItemGroup>
     <Compile Include="App_Start\AutofacWebapiConfig.cs" />
@@ -160,15 +268,28 @@
     <Compile Include="App_Start\SwaggerConfig.cs" />
     <Compile Include="App_Start\WebApiConfig.cs" />
     <Compile Include="Controllers\AccountController.cs" />
+    <Compile Include="Controllers\HomeController.cs" />
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
     <Compile Include="Infrastructure\Core\ApiControllerBase.cs" />
+    <Compile Include="Infrastructure\MessageHandlers\JYSpaCinemaAuthHandler.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>
     <Content Include="Views\web.config" />
     <Content Include="packages.config" />
+    <Content Include="Content\vendors\angular-cookies\angular-cookies.min.js.map" />
+    <Content Include="Content\vendors\angular-file-upload\angular-file-upload.js.map" />
+    <Content Include="Content\vendors\angular-file-upload\angular-file-upload.min.js.map" />
+    <Content Include="Content\vendors\angular-route\angular-route.min.js.map" />
+    <Content Include="Content\vendors\angular\angular.min.js.map" />
+    <Content Include="Content\vendors\underscore\underscore-min.map" />
+    <Content Include="Views\_ViewStart.cshtml" />
+    <Content Include="fonts\glyphicons-halflings-regular.woff" />
+    <Content Include="fonts\glyphicons-halflings-regular.ttf" />
+    <Content Include="fonts\glyphicons-halflings-regular.eot" />
+    <Content Include="Views\Home\Index.cshtml" />
     <None Include="Web.Debug.config">
       <DependentUpon>Web.config</DependentUpon>
     </None>
@@ -178,7 +299,12 @@
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
+    <Folder Include="Content\images\" />
+    <Folder Include="Content\vendors\jquery-raty\fonts\" />
+    <Folder Include="Content\vendors\jquery-raty\images\" />
     <Folder Include="Models\" />
+    <Folder Include="Scripts\spa\directives\" />
+    <Folder Include="Scripts\spa\services\" />
   </ItemGroup>
   <ItemGroup>
     <ProjectReference Include="..\JYSpaCinema.Domain\JYSpaCinema.Domain.csproj">

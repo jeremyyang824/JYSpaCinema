@@ -15,29 +15,40 @@ namespace JYSpaCinema.Service.AppServices
     {
         private readonly IMembershipService _membershipService;
 
-        public AccountAppService(IMembershipService membershipService, IUnitOfWork unitOfWork)
-            : base(unitOfWork)
+        public AccountAppService(
+            IMembershipService membershipService, 
+            IUnitOfWorkManager unitOfWorkManager)
+            : base(unitOfWorkManager)
         {
             this._membershipService = membershipService;
         }
 
-        public bool Login(LoginInputDto loginDto)
+        /// <summary>
+        /// 登录
+        /// </summary>
+        public MembershipContext Login(LoginInputDto loginDto)
         {
             MembershipContext userContext = this._membershipService.ValidateUser(loginDto.Username, loginDto.Password);
-            return userContext.User != null;
+            return userContext;
         }
 
+        /// <summary>
+        /// 注册新用户
+        /// </summary>
         public bool Register(RegistrationInputDto registrationDto)
         {
-            //this._unitOfWork.Begin(UnitOfWorkOptions.Default);
+            using (IUnitOfWork uow = this.UnitOfWorkManager.Begin(UnitOfWorkOptions.Default))
+            {
+                User user = this._membershipService.CreateUser(registrationDto.Username, registrationDto.Email, registrationDto.Password);
+                uow.SaveChanges();
 
-            User user = this._membershipService.CreateUser(registrationDto.Username, registrationDto.Email, registrationDto.Password);
-            this._unitOfWork.Commit();
+                this._membershipService.AddRoles(user, new int[] { 1 });
+                uow.Commit();
 
-            this._membershipService.AddRoles(user, new int[] { 1 });
-            this._unitOfWork.Commit();
-
-            return user != null;
+                return user != null;
+            }
         }
+
+
     }
 }

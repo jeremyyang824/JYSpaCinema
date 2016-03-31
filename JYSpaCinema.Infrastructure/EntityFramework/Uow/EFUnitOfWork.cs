@@ -52,13 +52,19 @@ namespace JYSpaCinema.Infrastructure.EntityFramework.Uow
             }
         }
 
+        public void SaveChanges()
+        {
+            if (this.DbContext != null)
+                this.DbContext.SaveChanges();
+        }
+
         public void Commit()
         {
             try
             {
-                //if (this._isCompleteCalledBefore)
-                //    throw new InvalidOperationException("Complete is called before!");
-                //this._isCompleteCalledBefore = true;
+                if (this._isCompleteCalledBefore)
+                    throw new InvalidOperationException("Complete is called before!");
+                this._isCompleteCalledBefore = true;
 
                 //Core Process
                 if (this.DbContext != null)
@@ -71,7 +77,6 @@ namespace JYSpaCinema.Infrastructure.EntityFramework.Uow
             }
             catch (Exception ex)
             {
-                //TODO: OnFailure
                 throw;
             }
         }
@@ -89,6 +94,6 @@ namespace JYSpaCinema.Infrastructure.EntityFramework.Uow
             if (this.CurrentTransaction != null)
                 this.CurrentTransaction.Dispose();
         }
-
+        
     }
 }

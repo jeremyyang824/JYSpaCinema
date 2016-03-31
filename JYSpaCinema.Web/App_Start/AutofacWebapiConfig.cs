@@ -63,6 +63,10 @@ namespace JYSpaCinema.Web.App_Start
                 .As<IMembershipService>()
                 .InstancePerRequest();
 
+            builder.RegisterType<UnitOfWorkManager>()
+                .As<IUnitOfWorkManager>()
+                .InstancePerRequest();
+
             //AppService
             builder.RegisterType<AccountAppService>()
                 .AsSelf()

@@ -67,18 +67,15 @@ namespace JYSpaCinema.Infrastructure.Services
 
         public MembershipContext ValidateUser(string username, string password)
         {
-            var membershipContext = new MembershipContext();
+            var membershipContext = new MembershipContext(username);
 
             var user = this._userRepository.GetSingleByUsername(username);
             if (user != null && isUserValid(user, password))
             {
-                var userRoles = user.Roles;
-                membershipContext.User = user;
-
-                var identity = new GenericIdentity(user.UserName);
-                membershipContext.Principal = new GenericPrincipal(
-                    identity,
-                    userRoles.Select(x => x.Name).ToArray());
+                membershipContext.IsAuthenticated = true;
+                membershipContext.UserId = user.ID;
+                membershipContext.Email = user.Email;
+                membershipContext.Roles = user.Roles.Select(r => r.ID.ToString()).Distinct().ToArray();
             }
             return membershipContext;
         }

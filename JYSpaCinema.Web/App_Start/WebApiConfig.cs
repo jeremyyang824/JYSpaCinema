@@ -9,7 +9,8 @@ namespace JYSpaCinema.Web
     {
         public static void Register(HttpConfiguration config)
         {
-            // Web API 配置和服务
+            //认证MesageHandler
+            config.MessageHandlers.Add(new JYSpaCinema.Web.Infrastructure.MessageHandlers.JYSpaCinemaAuthHandler());
 
             // Web API 路由
             config.MapHttpAttributeRoutes();

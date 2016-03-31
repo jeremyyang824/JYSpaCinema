@@ -5,6 +5,7 @@ using System.Web;
 using System.Net;
 using System.Net.Http;
 using System.Web.Http;
+using JYSpaCinema.Domain.ValueObjects;
 using JYSpaCinema.Service.AppServices;
 using JYSpaCinema.Service.DTO;
 using JYSpaCinema.Web.Infrastructure.Core;
@@ -38,8 +39,8 @@ namespace JYSpaCinema.Web.Controllers
                 if (!ModelState.IsValid)
                     return request.CreateResponse(HttpStatusCode.BadRequest, new { success = false });
 
-                bool loginResult = this._accountAppService.Login(loginDto);
-                return request.CreateResponse(HttpStatusCode.OK, new { success = loginResult });
+                MembershipContext loginResult = this._accountAppService.Login(loginDto);
+                return request.CreateResponse(HttpStatusCode.OK, new { success = loginResult.IsAuthenticated });
             });
         }
 
