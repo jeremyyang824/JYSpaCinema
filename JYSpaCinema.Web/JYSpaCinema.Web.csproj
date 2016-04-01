@@ -247,15 +247,22 @@
     <Content Include="Content\vendors\font-awesome\fonts\fontawesome-webfont.woff2" />
     <Content Include="Content\vendors\font-awesome\fonts\FontAwesome.otf" />
     <Content Include="Content\vendors\toastr\toastr.js.map" />
+    <Content Include="Scripts\spa\account\login.html" />
+    <Content Include="Scripts\spa\account\loginCtrl.js" />
     <Content Include="Scripts\spa\app.js" />
     <Content Include="Scripts\spa\home\index.html" />
     <Content Include="Scripts\spa\home\indexCtrl.js" />
     <Content Include="Scripts\spa\home\rootCtrl.js" />
     <Content Include="Scripts\spa\layout\sideBar.directive.js" />
     <Content Include="Scripts\spa\layout\sideBar.html" />
+    <Content Include="Scripts\spa\layout\topBar.html" />
     <Content Include="Scripts\spa\modules\common.core.js" />
+    <Content Include="Scripts\spa\layout\topBar.directive.js" />
     <None Include="Scripts\_references.js" />
     <Content Include="Scripts\spa\modules\common.ui.js" />
+    <Content Include="Scripts\spa\services\apiService.js" />
+    <Content Include="Scripts\spa\services\membershipService.js" />
+    <Content Include="Scripts\spa\services\notificationService.js" />
     <Content Include="Web.config">
       <SubType>Designer</SubType>
     </Content>
@@ -304,7 +311,6 @@
     <Folder Include="Content\vendors\jquery-raty\images\" />
     <Folder Include="Models\" />
     <Folder Include="Scripts\spa\directives\" />
-    <Folder Include="Scripts\spa\services\" />
   </ItemGroup>
   <ItemGroup>
     <ProjectReference Include="..\JYSpaCinema.Domain\JYSpaCinema.Domain.csproj">

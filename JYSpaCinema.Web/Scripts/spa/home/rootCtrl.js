@@ -3,19 +3,21 @@
 
     app.controller('rootCtrl', rootCtrl);
 
-    rootCtrl.$inject = ['$scope', '$location', '$rootScope'];
-    function rootCtrl($scope, $location, $rootScope) {
+    rootCtrl.$inject = ['$scope', '$location', 'membershipService', '$rootScope'];
+    function rootCtrl($scope, $location, membershipService, $rootScope) {
 
         $scope.userData = {};
+
         $scope.logout = function () {
+            membershipService.removeCredentials();
             $location.path('#/');
             displayUserInfo();
         };
 
         function displayUserInfo() {
-            $scope.userData.isUserLoggedIn = true;
+            $scope.userData.isUserLoggedIn = membershipService.isUserLoggedIn();
             if ($scope.userData.isUserLoggedIn) {
-                $scope.username = 'jeremyyang';
+                $scope.username = $rootScope.repository.loggedUser.username;
             }
         };
 

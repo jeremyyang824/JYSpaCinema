@@ -70,14 +70,18 @@ namespace JYSpaCinema.Web.App_Start
                 "~/Scripts/spa/modules/common.ui.js",
                 "~/Scripts/spa/app.js",
                 //service
-
+                "~/Scripts/spa/services/notificationService.js",
+                "~/Scripts/spa/services/apiService.js",
+                "~/Scripts/spa/services/membershipService.js",
                 //layout
                 "~/Scripts/spa/layout/sideBar.directive.js",
+                "~/Scripts/spa/layout/topBar.directive.js",
                 //directive
 
                 //controller
                 "~/Scripts/spa/home/rootCtrl.js",
-                "~/Scripts/spa/home/indexCtrl.js"
+                "~/Scripts/spa/home/indexCtrl.js",
+                "~/Scripts/spa/account/loginCtrl.js"
                 ));
 
             //BundleTable.EnableOptimizations = false;
