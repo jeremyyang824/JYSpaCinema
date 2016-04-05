@@ -13,7 +13,6 @@
 /// <reference path="../Content/vendors/angular-mocks/ngMockE2E.js" />
 /// <reference path="../Content/vendors/angular-route/angular-route.js" />
 /// <reference path="../content/vendors/angular-validator/angular-validator.js" />
-/// <reference path="../content/vendors/angular-validator/angular-validator-rules.js" />
 /// <reference path="../content/vendors/bootstrap/js/bootstrap.js" />
 /// <reference path="../content/vendors/bootstrap/js/npm.js" />
 /// <reference path="../content/vendors/fancybox/jquery.fancybox.js" />

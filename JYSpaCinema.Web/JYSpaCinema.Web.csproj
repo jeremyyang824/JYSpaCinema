@@ -176,8 +176,6 @@
     <Content Include="Content\vendors\angular-mocks\ngMockE2E.js" />
     <Content Include="Content\vendors\angular-route\angular-route.js" />
     <Content Include="Content\vendors\angular-route\angular-route.min.js" />
-    <Content Include="Content\vendors\angular-validator\angular-validator-rules.js" />
-    <Content Include="Content\vendors\angular-validator\angular-validator-rules.min.js" />
     <Content Include="Content\vendors\angular-validator\angular-validator.js" />
     <Content Include="Content\vendors\angular-validator\angular-validator.min.js" />
     <Content Include="Content\vendors\angular\angular-csp.css" />
