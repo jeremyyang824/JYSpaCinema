@@ -7,13 +7,18 @@
         $scope.pageClass = 'page-login';
         $scope.user = {};
 
-        $scope.login = function () {
+        $scope.login = function (isValid) {
+            if (!isValid) {
+                notificationService.displayError('Validation failed.');
+                return;
+            }
+
             membershipService.login($scope.user, function (result) {
                 //loginCompleted
                 if (result.data.success) {
                     membershipService.saveCredentials($scope.user);
                     notificationService.displaySuccess('您好！' + $scope.user.username);
-                    $scope.userData.displayUserInfo();
+                    $scope.displayUserInfo();
                     if ($rootScope.previousState)
                         $location.path($rootScope.previousState);
                     else

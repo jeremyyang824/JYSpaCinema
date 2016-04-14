@@ -14,7 +14,9 @@
                 .then(function (result) {
                     //success callback
                     success(result);
-                }, function (error) {
+                })
+                .catch(function (error) {
+                    debugger;
                     if (error.status == '401') {
                         notificationService.displayError('Authentication required.');
                         $rootScope.previousState = $location.path();
@@ -30,7 +32,9 @@
             return $http.post(url, data)
                 .then(function (result) {
                     success(result);
-                }, function (error) {
+                })
+                .catch(function (error) {
+                    debugger;
                     if (error.status == '401') {
                         notificationService.displayError('Authentication required.');
                         $rootScope.previousState = $location.path();

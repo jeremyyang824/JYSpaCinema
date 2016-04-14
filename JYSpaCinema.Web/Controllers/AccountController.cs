@@ -36,9 +36,6 @@ namespace JYSpaCinema.Web.Controllers
         {
             return CreateHttpResponse(request, () =>
             {
-                if (!ModelState.IsValid)
-                    return request.CreateResponse(HttpStatusCode.BadRequest, new { success = false });
-
                 MembershipContext loginResult = this._accountAppService.Login(loginDto);
                 return request.CreateResponse(HttpStatusCode.OK, new { success = loginResult.IsAuthenticated });
             });
@@ -57,9 +54,6 @@ namespace JYSpaCinema.Web.Controllers
         {
             return CreateHttpResponse(request, () =>
             {
-                if (!ModelState.IsValid)
-                    return request.CreateResponse(HttpStatusCode.BadRequest, new { success = false });
-
                 bool registerResult = this._accountAppService.Register(registrationDto);
                 return request.CreateResponse(HttpStatusCode.OK, new { success = registerResult });
             });

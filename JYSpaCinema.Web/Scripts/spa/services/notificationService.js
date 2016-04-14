@@ -26,12 +26,28 @@
         function displayError(error) {
             if (Array.isArray(error)) {
                 error.forEach(function (err) {
-                    toastr.error(err);
+                    toastr.error(getErrorMsg(err));
                 });
             } else {
-                toastr.error(error);
+                toastr.error(getErrorMsg(error));
             }
         };
+
+        function getErrorMsg(error) {
+            if (error == null)
+                return 'unknow exception!';
+
+            if (typeof error == 'string')
+                return error;
+
+            var msg = '';
+            if (error.errors && Array.isArray(error.errors)) {
+                error.errors.forEach(function(err) {
+                    msg += err + '<br/>';
+                });
+            }
+            return msg;
+        }
 
         function displayWarning(message) {
             toastr.warning(message);

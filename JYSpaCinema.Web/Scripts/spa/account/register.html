@@ -1,0 +1,21 @@
+﻿<div class="row">
+    <form name="userRegistrationForm" class="form-signin" ng-submit="register(userRegistrationForm.$valid)" novalidate>
+        <h3 class="form-signin-heading">注册 <label class="label label-danger">管理员</label></h3>
+        <div class="form-group">
+            <label for="inputUsername">用户名：</label>
+            <input type="text" name="inputUsername" class="form-control" ng-model="user.username"
+                   placeholder="Username" required required-message="'Username is required'">
+        </div>
+        <div class="form-group">
+            <label for="inputPassword">密码：</label>
+            <input type="password" name="inputPassword" class="form-control" ng-model="user.password" 
+                   placeholder="Password" required required-message="'Password is required'">
+        </div>
+        <div class="form-group">
+            <label for="inputEmail">Email：</label>
+            <input type="email" name="inputEmail" class="form-control" ng-model="user.email" 
+                   placeholder="Email address" required required-message="'Email is required'">
+        </div>
+        <button class="btn btn-lg btn-primary btn-block" type="submit">注册</button>
+    </form>
+</div>

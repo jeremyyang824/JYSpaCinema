@@ -8,7 +8,6 @@
     config.$inject = ['$routeProvider'];
     function config($routeProvider) {
         //debugger;
-
         $routeProvider
             .when("/", {
                 templateUrl: "scripts/spa/home/index.html",
@@ -17,6 +16,10 @@
             .when("/login", {
                 templateUrl: "scripts/spa/account/login.html",
                 controller: "loginCtrl"
+            })
+            .when("/register", {
+                templateUrl: "scripts/spa/account/register.html",
+                controller: "registerCtrl"
             })
             .otherwise({ redirectTo: "/" });
     };
@@ -31,5 +34,14 @@
             $http.defaults.headers.common['Authorization'] = $rootScope.repository.loggedUser.authdata;
         };
     };
+
+    //检测是否有登录信息
+    isAuthenticated.$inject = ['membershipService', '$rootScope', '$location'];
+    function isAuthenticated(membershipService, $rootScope, $location) {
+        if (!membershipService.isUserLoggedIn()) {
+            $rootScope.previousState = $location.path();
+            $location.path('/login');
+        }
+    }
 
 })();

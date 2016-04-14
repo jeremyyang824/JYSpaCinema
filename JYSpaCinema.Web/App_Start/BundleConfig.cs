@@ -28,7 +28,7 @@ namespace JYSpaCinema.Web.App_Start
                 "~/Content/vendors/angular/angular.js",
                 "~/Content/vendors/angular-route/angular-route.js",
                 "~/Content/vendors/angular-cookies/angular-cookies.js",
-                "~/Content/vendors/angular-validator/angular-validator.js",
+                //"~/Content/vendors/angular-validator/angular-validator.js",
                 "~/Content/vendors/angular-base64/angular-base64.js",
                 "~/Content/vendors/angular-file-upload/angular-file-upload.js",
                 "~/Content/vendors/angucomplete-alt/angucomplete-alt.min.js",
@@ -81,7 +81,8 @@ namespace JYSpaCinema.Web.App_Start
                 //controller
                 "~/Scripts/spa/home/rootCtrl.js",
                 "~/Scripts/spa/home/indexCtrl.js",
-                "~/Scripts/spa/account/loginCtrl.js"
+                "~/Scripts/spa/account/loginCtrl.js",
+                "~/Scripts/spa/account/registerCtrl.js"
                 ));
 
             //BundleTable.EnableOptimizations = false;

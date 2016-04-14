@@ -11,17 +11,17 @@
         $scope.logout = function () {
             membershipService.removeCredentials();
             $location.path('#/');
-            displayUserInfo();
+            $scope.displayUserInfo();
         };
 
-        function displayUserInfo() {
+        $scope.displayUserInfo = function() {
             $scope.userData.isUserLoggedIn = membershipService.isUserLoggedIn();
             if ($scope.userData.isUserLoggedIn) {
                 $scope.username = $rootScope.repository.loggedUser.username;
             }
         };
 
-        displayUserInfo();
+        $scope.displayUserInfo();
     }
 
 })(angular.module('jySpaCinema'));

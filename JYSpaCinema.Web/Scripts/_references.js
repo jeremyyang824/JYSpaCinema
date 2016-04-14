@@ -34,6 +34,7 @@
 /// <reference path="../Content/vendors/underscore/underscore.js" />
 /// <reference path="../Content/vendors/underscore/underscore-min.js" />
 /// <reference path="spa/account/loginctrl.js" />
+/// <reference path="spa/account/registerctrl.js" />
 /// <reference path="spa/app.js" />
 /// <reference path="spa/home/indexctrl.js" />
 /// <reference path="spa/home/rootctrl.js" />
