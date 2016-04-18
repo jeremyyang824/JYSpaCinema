@@ -15,14 +15,14 @@ namespace JYSpaCinema.Infrastructure.Services
 {
     public class MembershipService : IMembershipService
     {
-        private readonly IRepository<User, int> _userRepository;
-        private readonly IRepository<Role, int> _roleRepository;
+        private readonly IUserRepository _userRepository;
+        private readonly IRoleRepository _roleRepository;
         private readonly IEncryptionService _encryptionService;
         private readonly IUnitOfWork _unitOfWork;
 
         public MembershipService(
-            IRepository<User, int> userRepository,
-            IRepository<Role, int> roleRepository,
+            IUserRepository userRepository,
+            IRoleRepository roleRepository,
             IEncryptionService encryptionService)
         {
             this._userRepository = userRepository;

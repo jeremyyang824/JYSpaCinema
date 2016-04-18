@@ -48,7 +48,11 @@ namespace JYSpaCinema.Infrastructure.EntityFramework.Uow
             //Core Process
             if (options.IsTransactional)
             {
-                this.CurrentTransaction = new TransactionScope(options.Scope, options.Timeout);
+                this.CurrentTransaction = new TransactionScope(options.Scope, new TransactionOptions
+                {
+                    IsolationLevel = options.IsolationLevel,
+                    Timeout = options.Timeout
+                });
             }
         }
 
@@ -94,6 +98,6 @@ namespace JYSpaCinema.Infrastructure.EntityFramework.Uow
             if (this.CurrentTransaction != null)
                 this.CurrentTransaction.Dispose();
         }
-        
+
     }
 }

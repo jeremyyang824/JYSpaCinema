@@ -94,14 +94,15 @@
     <Compile Include="EntityFramework\DefaultDbContextProvider.cs" />
     <Compile Include="EntityFramework\IDbContextProvider.cs" />
     <Compile Include="EntityFramework\JYSpaCinemaDbContext.cs" />
-    <Compile Include="EntityFramework\Repositories\CustomerRepositoryExtensions.cs" />
+    <Compile Include="EntityFramework\Repositories\CustomerRepository.cs" />
     <Compile Include="EntityFramework\Repositories\EFBaseRepository.cs" />
-    <Compile Include="EntityFramework\Repositories\StockRepositoryExtensions.cs" />
-    <Compile Include="EntityFramework\Repositories\UserRepositoryExtensions.cs" />
+    <Compile Include="EntityFramework\Repositories\RoleRepository.cs" />
+    <Compile Include="EntityFramework\Repositories\StockRepository.cs" />
+    <Compile Include="EntityFramework\Repositories\UserRepository.cs" />
     <Compile Include="EntityFramework\Uow\EFUnitOfWork.cs" />
     <Compile Include="EntityFramework\Uow\UnitOfWorkManager.cs" />
-    <Compile Include="Mappings\AutoMapperConfiguration.cs" />
     <Compile Include="Mappings\DomainToViewModelMappingProfile.cs" />
+    <Compile Include="Mappings\IMapperRegistrar.cs" />
     <Compile Include="Migrations\201603091019494_Initial.cs" />
     <Compile Include="Migrations\201603091019494_Initial.Designer.cs">
       <DependentUpon>201603091019494_Initial.cs</DependentUpon>

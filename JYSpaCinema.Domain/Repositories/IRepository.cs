@@ -16,6 +16,12 @@ namespace JYSpaCinema.Domain.Repositories
 
         IQueryable<TEntity> FindBy(Expression<Func<TEntity, bool>> predicate, params Expression<Func<TEntity, object>>[] eager);
 
+        IPagedList<TEntity> FindByPager(
+            Expression<Func<TEntity, bool>> predicate,
+            int pageNumber, int pageSize,
+            IEnumerable<Tuple<Expression<Func<TEntity, object>>, SortOrder>> sortExpression,
+            params Expression<Func<TEntity, object>>[] eager);
+
         void Add(TEntity entity);
 
         void Delete(TEntity entity);

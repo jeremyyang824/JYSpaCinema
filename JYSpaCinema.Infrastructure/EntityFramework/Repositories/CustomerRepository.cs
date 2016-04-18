@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Data.Entity;
 using System.Linq;
 using System.Text;
 using JYSpaCinema.Domain.Entities;
@@ -7,19 +8,23 @@ using JYSpaCinema.Domain.Repositories;
 
 namespace JYSpaCinema.Infrastructure.EntityFramework.Repositories
 {
-    public static class CustomerRepositoryExtensions
+    public class CustomerRepository : EFBaseRepository<Customer, int>, ICustomerRepository
     {
-        public static bool UserExists(this IRepository<Customer, int> customersRepository, string email, string identityCard)
+        public CustomerRepository(IDbContextProvider<DbContext> dbContextProvider)
+            : base(dbContextProvider)
+        { }
+
+        public bool UserExists(string email, string identityCard)
         {
             bool userExists = false;
-            userExists = customersRepository.GetAll()
+            userExists = this.GetAll()
                 .Any(c => c.Email.ToLower() == email || c.IdentityCard.ToLower() == identityCard);
             return userExists;
         }
 
-        public static string GetCustomerFullName(this IRepository<Customer, int> customersRepository, int customerId)
+        public string GetCustomerFullName(int customerId)
         {
-            var customer = customersRepository.GetByKey(customerId);
+            var customer = this.GetByKey(customerId);
             if (customer == null)
                 throw new JYSpaCinemaDomainException("Customer:[{0}] not exists!", customerId);
 

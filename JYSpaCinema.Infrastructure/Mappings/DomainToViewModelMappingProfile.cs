@@ -4,19 +4,16 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using AutoMapper;
+using JYSpaCinema.Domain.Entities;
+using JYSpaCinema.Service.DTO;
 
 namespace JYSpaCinema.Infrastructure.Mappings
 {
-    public class DomainToViewModelMappingProfile : Profile
+    public class DomainToViewModelMappingProfile : IMapperRegistrar
     {
-        public override string ProfileName
+        public void Register(IProfileExpression mapperConfig)
         {
-            get { return "DomainToViewModelMappings"; }
-        }
-
-        protected override void Configure()
-        {
-
+            mapperConfig.CreateMap<Customer, CustomerDto>();
         }
     }
 }

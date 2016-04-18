@@ -21,6 +21,14 @@
                 templateUrl: "scripts/spa/account/register.html",
                 controller: "registerCtrl"
             })
+            .when("/customers", {
+                templateUrl: "scripts/spa/customers/customers.html",
+                controller: "customersCtrl"
+            })
+            .when("/customers/register", {
+                templateUrl: "scripts/spa/customers/register.html",
+                controller: "customersRegCtrl"
+            })
             .otherwise({ redirectTo: "/" });
     };
 

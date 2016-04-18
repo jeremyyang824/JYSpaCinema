@@ -54,7 +54,7 @@ namespace JYSpaCinema.Web.App_Start
                 .As(typeof(IUnitOfWork))
                 .InstancePerRequest();
 
-            //Domain
+            //Domain Service
             builder.RegisterType<EncryptionService>()
                 .As<IEncryptionService>()
                 .InstancePerRequest();
@@ -63,12 +63,34 @@ namespace JYSpaCinema.Web.App_Start
                 .As<IMembershipService>()
                 .InstancePerRequest();
 
+            //Domain Repository
+            builder.RegisterType<CustomerRepository>()
+                .As<ICustomerRepository>()
+                .InstancePerRequest();
+
+            builder.RegisterType<StockRepository>()
+                .As<IStockRepository>()
+                .InstancePerRequest();
+
+            builder.RegisterType<UserRepository>()
+                .As<IUserRepository>()
+                .InstancePerRequest();
+
+            builder.RegisterType<RoleRepository>()
+               .As<IRoleRepository>()
+               .InstancePerRequest();
+
+            //Domain Infrastructure
             builder.RegisterType<UnitOfWorkManager>()
                 .As<IUnitOfWorkManager>()
                 .InstancePerRequest();
 
             //AppService
             builder.RegisterType<AccountAppService>()
+                .AsSelf()
+                .InstancePerRequest();
+
+            builder.RegisterType<CustomerAppService>()
                 .AsSelf()
                 .InstancePerRequest();
 

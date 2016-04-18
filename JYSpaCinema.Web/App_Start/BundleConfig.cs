@@ -77,12 +77,15 @@ namespace JYSpaCinema.Web.App_Start
                 "~/Scripts/spa/layout/sideBar.directive.js",
                 "~/Scripts/spa/layout/topBar.directive.js",
                 //directive
-
+                "~/Scripts/spa/directives/customPager.directive.js",
                 //controller
                 "~/Scripts/spa/home/rootCtrl.js",
                 "~/Scripts/spa/home/indexCtrl.js",
                 "~/Scripts/spa/account/loginCtrl.js",
-                "~/Scripts/spa/account/registerCtrl.js"
+                "~/Scripts/spa/account/registerCtrl.js",
+                 "~/Scripts/spa/customers/customersCtrl.js",
+                 "~/Scripts/spa/customers/customersRegCtrl.js",
+                 "~/Scripts/spa/customers/customerEditCtrl.js"
                 ));
 
             //BundleTable.EnableOptimizations = false;
