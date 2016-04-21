@@ -44,13 +44,17 @@ namespace JYSpaCinema.Web.App_Start
                 "~/Content/vendors/fancybox/jquery.fancybox.js",
                 "~/Content/vendors/fancybox/jquery.fancybox-media.js",
                 //angularjs loading-bar
-                "~/Content/vendors/angular-loading-bar/loading-bar.js"
+                "~/Content/vendors/angular-loading-bar/loading-bar.js",
+                //localize
+                "~/Scripts/i18n/angular-locale_zh-cn.js"
                 ));
 
             bundles.Add(new StyleBundle("~/bundles/css/vendors").Include(
                 //bootstrap 3.3.6
                 "~/Content/vendors/bootstrap/css/bootstrap.css",
                 "~/Content/vendors/bootstrap/css/bootstrap-theme.css",
+                //angular-ui-bootstrap
+                //"~/Content/vendors/angular-bootstrap/ui-bootstrap-csp.css",
                 //font-awesome
                 "~/Content/vendors/font-awesome/css/font-awesome.css",
                 //toastr
@@ -62,7 +66,8 @@ namespace JYSpaCinema.Web.App_Start
                 //angularjs loading-bar
                 "~/Content/vendors/angular-loading-bar/loading-bar.css",
                 //site custom
-                "~/Content/css/site.css"
+                "~/Content/css/site.css",
+                "~/Content/Site.css"
                 ));
 
             bundles.Add(new ScriptBundle("~/bundles/scripts/spa").Include(

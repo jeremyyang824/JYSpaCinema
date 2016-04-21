@@ -11,7 +11,7 @@ using JYSpaCinema.Web.Infrastructure.Core;
 
 namespace JYSpaCinema.Web.Controllers
 {
-    //[Authorize(Roles = "Admin")]
+    [Authorize(Roles = "Admin")]
     [RoutePrefix("api/customers")]
     public class CustomersController : ApiControllerBase
     {

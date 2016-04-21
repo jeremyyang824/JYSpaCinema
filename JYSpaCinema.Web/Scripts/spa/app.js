@@ -23,7 +23,8 @@
             })
             .when("/customers", {
                 templateUrl: "scripts/spa/customers/customers.html",
-                controller: "customersCtrl"
+                controller: "customersCtrl",
+                resolve: { isAuthenticated: isAuthenticated }
             })
             .when("/customers/register", {
                 templateUrl: "scripts/spa/customers/register.html",

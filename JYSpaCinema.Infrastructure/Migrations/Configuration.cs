@@ -71,7 +71,7 @@ namespace JYSpaCinema.Infrastructure.Migrations
                 {
                     FirstName = MockData.Person.FirstName(),
                     LastName = MockData.Person.Surname(),
-                    IdentityCard = Guid.NewGuid().ToString(),
+                    IdentityCard = Guid.NewGuid().ToString("N"),
                     Email = MockData.Internet.Email(),
                     DateOfBirth = new DateTime(1985, 10, 20).AddMonths(i).AddDays(10),
                     RegistrationDate = DateTime.Now.AddDays(i),

@@ -75,7 +75,7 @@ namespace JYSpaCinema.Infrastructure.Services
                 membershipContext.IsAuthenticated = true;
                 membershipContext.UserId = user.ID;
                 membershipContext.Email = user.Email;
-                membershipContext.Roles = user.Roles.Select(r => r.ID.ToString()).Distinct().ToArray();
+                membershipContext.Roles = user.Roles.Select(r => r.Name.ToString()).Distinct().ToArray();
             }
             return membershipContext;
         }

@@ -245,6 +245,7 @@
     <Content Include="Content\vendors\font-awesome\fonts\fontawesome-webfont.woff2" />
     <Content Include="Content\vendors\font-awesome\fonts\FontAwesome.otf" />
     <Content Include="Content\vendors\toastr\toastr.js.map" />
+    <Content Include="Scripts\i18n\angular-locale_zh-cn.js" />
     <Content Include="Scripts\spa\account\login.html" />
     <Content Include="Scripts\spa\account\loginCtrl.js" />
     <Content Include="Scripts\spa\account\register.html" />
