@@ -4,7 +4,7 @@ namespace JYSpaCinema.Service.AppServices
 {
     public abstract class BaseAppService
     {
-        public IUnitOfWorkManager UnitOfWorkManager { get; }
+        public IUnitOfWorkManager UnitOfWorkManager { get; set; }
 
         protected BaseAppService(IUnitOfWorkManager unitOfWorkManager)
         {

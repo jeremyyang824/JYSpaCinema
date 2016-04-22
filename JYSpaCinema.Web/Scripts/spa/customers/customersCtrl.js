@@ -9,14 +9,15 @@
         $scope.pageClass = 'page-customers';
         $scope.loadingCustomers = false;
 
+        $scope.filterCustomers = '';
         $scope.page = 1;
         $scope.pageSize = 4;
-        $scope.filterCustomers = '';
-
-        $scope.pagesCount = 0;
+        $scope.totalItemCount = 0;
         $scope.Customers = [];
 
         $scope.search = search;
+        $scope.pageChanged = pageChanged;
+
         $scope.loadCustomers = loadCustomers;
         $scope.clearSearch = clearSearch;
         $scope.openEditDialog = openEditDialog;
@@ -40,7 +41,7 @@
                 //success
                 function (result) {
                     $scope.Customers = result.data.Results;
-                    $scope.pagesCount = Math.ceil(result.data.TotalItemCount / $scope.pageSize);
+                    $scope.totalItemCount = result.data.TotalItemCount;
                     $scope.loadingCustomers = false;
 
                     if (successCallback && typeof (successCallback) == 'function') {
@@ -57,6 +58,10 @@
             loadCustomers(1, function (data) {
                 notificationService.displayInfo(data.TotalItemCount + ' customers found');
             });
+        }
+
+        function pageChanged() {
+            loadCustomers($scope.page);
         }
 
         function clearSearch() {

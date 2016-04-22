@@ -36,7 +36,7 @@ namespace JYSpaCinema.Web.App_Start
             BundleConfig.RegisterBundles(BundleTable.Bundles);
 
             //EF监控
-            HibernatingRhinos.Profiler.Appender.EntityFramework.EntityFrameworkProfiler.Initialize();
+            //HibernatingRhinos.Profiler.Appender.EntityFramework.EntityFrameworkProfiler.Initialize();
         }
     }
 }
