@@ -46,7 +46,15 @@ namespace JYSpaCinema.Web.App_Start
                 //angularjs loading-bar
                 "~/Content/vendors/angular-loading-bar/loading-bar.js",
                 //localize
-                "~/Scripts/i18n/angular-locale_zh-cn.js"
+                "~/Scripts/i18n/angular-locale_zh-cn.js",
+                //moment
+                "~/Content/vendors/moment/moment-with-locales.js",
+                //angular-datepicker
+                "~/Content/vendors/angular-datepicker/angular-datepicker.js",
+                //bootstrap-daterangepicker
+                "~/Content/vendors/bootstrap-daterangepicker/daterangepicker.js",
+                //angular-daterangepicker
+                "~/Content/vendors/angular-daterangepicker/angular-daterangepicker.js"
                 ));
 
             bundles.Add(new StyleBundle("~/bundles/css/vendors").Include(
@@ -65,6 +73,10 @@ namespace JYSpaCinema.Web.App_Start
                 "~/Content/vendors/fancybox/jquery.fancybox.css",
                 //angularjs loading-bar
                 "~/Content/vendors/angular-loading-bar/loading-bar.css",
+                //angular-datepicker
+                "~/Content/vendors/angular-datepicker/angular-datepicker.css",
+                //bootstrap-daterangepicker
+                "~/Content/vendors/bootstrap-daterangepicker/daterangepicker.css",
                 //site custom
                 "~/Content/css/site.css",
                 "~/Content/Site.css"
@@ -90,7 +102,8 @@ namespace JYSpaCinema.Web.App_Start
                 "~/Scripts/spa/account/registerCtrl.js",
                  "~/Scripts/spa/customers/customersCtrl.js",
                  "~/Scripts/spa/customers/customersRegCtrl.js",
-                 "~/Scripts/spa/customers/customerEditCtrl.js"
+                 "~/Scripts/spa/customers/customerEditCtrl.js",
+                 "~/Scripts/spa/movies/moviesCtrl.js"
                 ));
 
             //BundleTable.EnableOptimizations = false;

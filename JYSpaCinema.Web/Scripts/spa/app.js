@@ -30,6 +30,24 @@
                 templateUrl: "scripts/spa/customers/register.html",
                 controller: "customersRegCtrl"
             })
+            .when("/movies", {
+                templateUrl: "scripts/spa/movies/movies.html",
+                controller: "moviesCtrl"
+            })
+            .when("/movies/add", {
+                templateUrl: "scripts/spa/movies/add.html",
+                controller: "movieAddCtrl",
+                resolve: { isAuthenticated: isAuthenticated }
+            })
+            .when("/movies/:id", {
+                templateUrl: "scripts/spa/movies/details.html",
+                controller: "movieDetailsCtrl",
+                resolve: { isAuthenticated: isAuthenticated }
+            })
+            .when("/movies/edit/:id", {
+                templateUrl: "scripts/spa/movies/edit.html",
+                controller: "movieEditCtrl"
+            })
             .otherwise({ redirectTo: "/" });
     };
 

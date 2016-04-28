@@ -3,15 +3,15 @@
 
     app.controller('customersCtrl', customersCtrl);
 
-    customersCtrl.$inject = ['$scope', '$uibModal', 'apiService', 'notificationService'];
-    function customersCtrl($scope, $uibModal, apiService, notificationService) {
+    customersCtrl.$inject = ['$scope', '$uibModal', 'apiService', 'notificationService', '$log'];
+    function customersCtrl($scope, $uibModal, apiService, notificationService, $log) {
 
         $scope.pageClass = 'page-customers';
         $scope.loadingCustomers = false;
 
         $scope.filterCustomers = '';
         $scope.page = 1;
-        $scope.pageSize = 4;
+        $scope.pageSize = 6;
         $scope.totalItemCount = 0;
         $scope.Customers = [];
 
@@ -76,12 +76,20 @@
                 templateUrl: '/scripts/spa/customers/editCustomerModal.html',
                 controller: 'customerEditCtrl',
                 scope: $scope,
-                size: 'lg'
+                size: 'lg',
+                resolve: {
+                    EditedCustomer: function () {
+                        $scope.EditedCustomer.DateOfBirth = new Date($scope.EditedCustomer.DateOfBirth);
+                        return $scope.EditedCustomer;
+                    }
+                }
             })
             .result
-            .then(function ($scope) {
-                clearSearch();
+            .then(function (result) {
+                $log.info('Modal closed at: ' + new Date() + ' result:' + result);
+                //clearSearch();
             }, function () {
+                $log.info('Modal dismissed at: ' + new Date());
             });
         };
 

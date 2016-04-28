@@ -2,14 +2,10 @@
 using System.Collections.Generic;
 using System.Linq;
 using System.Linq.Expressions;
-using System.Text;
-using System.Threading.Tasks;
 using JYSpaCinema.Domain.Entities;
 using JYSpaCinema.Domain.Repositories;
-using JYSpaCinema.Domain.Services;
 using JYSpaCinema.Service.DTO;
 using JYSpaCinema.Service.Uow;
-using AutoMapper;
 using JYSpaCinema.Domain;
 
 namespace JYSpaCinema.Service.AppServices
@@ -84,9 +80,15 @@ namespace JYSpaCinema.Service.AppServices
         /// <param name="customer">更新客户及信息</param>
         public void Update(CustomerDto customer)
         {
+            if (customer.ID <= 0)
+                throw new ArgumentException("customer");
+
             using (IUnitOfWork uow = this.UnitOfWorkManager.Begin(UnitOfWorkOptions.Default))
             {
                 Customer existCustomer = this._customersRepository.GetByKey(customer.ID);
+                if (existCustomer == null)
+                    throw new DomainException("Customer [{0}] not exists!", customer.ID);
+
                 this.updateCustomer(existCustomer, customer);
                 this._customersRepository.Update(existCustomer);
 
@@ -112,14 +114,23 @@ namespace JYSpaCinema.Service.AppServices
                     || c.FirstName.ToLower().Contains(filter)
                     || c.IdentityCard.ToLower().Contains(filter));
             }
-            IPagedList<Customer> result = this._customersRepository.FindByPager(searchExpression, page, pageSize,
-                new[]
-                {
-                    Tuple.Create<Expression<Func<Customer, object>>, SortOrder>((c => c.LastName),SortOrder.Ascending),
-                    Tuple.Create<Expression<Func<Customer, object>>, SortOrder>((c => c.FirstName),SortOrder.Ascending)
-                });
+            //IPagedList<Customer> result = this._customersRepository.FindByPager(searchExpression, page, pageSize,
+            //    new SortExpression<Customer>[]
+            //    {
+            //        new SortExpression<Customer>(c=>c.LastName,SortOrder.Ascending),
+            //        new SortExpression<Customer>(c=>c.FirstName,SortOrder.Ascending),
+            //    });
 
-            return result.MapToPagination<CustomerDto>();
+            //return result.MapToPagination<CustomerDto>();
+
+            var query = this._customersRepository.GetAll().WhereIf(searchExpression);
+            var totalCount = query.Count();
+            var items = query
+                .OrderBy(c => c.LastName).ThenBy(c => c.FirstName)
+                .PageBy((page - 1) * pageSize, pageSize)
+                .ToList()
+                .MapTo<IReadOnlyList<CustomerDto>>();
+            return new PaginationResult<CustomerDto>(totalCount, items);
         }
 
         private void updateCustomer(Customer customer, CustomerDto source)

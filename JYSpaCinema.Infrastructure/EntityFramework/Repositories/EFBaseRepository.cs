@@ -52,13 +52,14 @@ namespace JYSpaCinema.Infrastructure.EntityFramework.Repositories
             return Context.Set<TEntity>().Find(id);
         }
 
-        public IQueryable<TEntity> GetAll(params Expression<Func<TEntity, object>>[] eager)
+        public IQueryable<TEntity> GetAll(params Expression<Func<TEntity, dynamic>>[] eager)
         {
             IQueryable<TEntity> query = Context.Set<TEntity>();
             return eager == null ? query : eager.Aggregate(query, (q, includeProp) => q.Include(includeProp));
         }
 
-        public IQueryable<TEntity> FindBy(Expression<Func<TEntity, bool>> predicate, params Expression<Func<TEntity, object>>[] eager)
+        /*
+        public IQueryable<TEntity> FindBy(Expression<Func<TEntity, bool>> predicate, params Expression<Func<TEntity, dynamic>>[] eager)
         {
             IQueryable<TEntity> query = Context.Set<TEntity>();
             if (predicate != null)
@@ -69,8 +70,8 @@ namespace JYSpaCinema.Infrastructure.EntityFramework.Repositories
         public IPagedList<TEntity> FindByPager(
             Expression<Func<TEntity, bool>> predicate,
             int pageNumber, int pageSize,
-            IEnumerable<Tuple<Expression<Func<TEntity, object>>, SortOrder>> sortExpression,
-            params Expression<Func<TEntity, object>>[] eager)
+            IEnumerable<SortExpression<TEntity>> sortExpressions,
+            params Expression<Func<TEntity, dynamic>>[] eager)
         {
             IQueryable<TEntity> query = Context.Set<TEntity>();
             if (predicate != null)
@@ -78,7 +79,7 @@ namespace JYSpaCinema.Infrastructure.EntityFramework.Repositories
 
             int totalCount = query.Count();
 
-            query = this.SortQuery(query, sortExpression)
+            query = this.SortQuery(query, sortExpressions) //query.OrderBy(s => s.ID)
                 .Skip((pageNumber - 1) * pageSize)
                 .Take(pageSize);
 
@@ -88,30 +89,30 @@ namespace JYSpaCinema.Infrastructure.EntityFramework.Repositories
             return new PagedList<TEntity>(query.ToList(), pageNumber, pageSize, totalCount);
         }
 
-        protected virtual IQueryable<TEntity> SortQuery(IQueryable<TEntity> queryable, IEnumerable<Tuple<Expression<Func<TEntity, object>>, SortOrder>> sortExpression)
+        protected virtual IQueryable<TEntity> SortQuery(IQueryable<TEntity> queryable, IEnumerable<SortExpression<TEntity>> sortExpressions)
         {
             int idx = 0;
-            if (sortExpression != null)
+            if (sortExpressions != null)
             {
-                foreach (var sortExp in sortExpression)
+                foreach (var sortExp in sortExpressions)
                 {
-                    switch (sortExp.Item2)
+                    switch (sortExp.SortOrder)
                     {
                         case SortOrder.Ascending:
-                            if (sortExp.Item1 != null)
+                            if (sortExp.SortPredicate != null)
                             {
                                 queryable = idx == 0
-                                    ? queryable.OrderBy(sortExp.Item1)
-                                    : ((IOrderedQueryable<TEntity>)queryable).ThenBy(sortExp.Item1);
+                                    ? queryable.OrderBy(sortExp.SortPredicate)
+                                    : ((IOrderedQueryable<TEntity>)queryable).ThenBy(sortExp.SortPredicate);
                                 idx++;
                             }
                             break;
                         case SortOrder.Descending:
-                            if (sortExp.Item1 != null)
+                            if (sortExp.SortPredicate != null)
                             {
                                 queryable = idx == 0
-                                    ? queryable.OrderByDescending(sortExp.Item1)
-                                    : ((IOrderedQueryable<TEntity>)queryable).ThenByDescending(sortExp.Item1);
+                                    ? queryable.OrderByDescending(sortExp.SortPredicate)
+                                    : ((IOrderedQueryable<TEntity>)queryable).ThenByDescending(sortExp.SortPredicate);
                                 idx++;
                             }
                             break;
@@ -120,7 +121,7 @@ namespace JYSpaCinema.Infrastructure.EntityFramework.Repositories
             }
             return queryable;
         }
-
+        */
         #endregion
     }
 }

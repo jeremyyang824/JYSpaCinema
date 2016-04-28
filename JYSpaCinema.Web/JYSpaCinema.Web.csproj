@@ -164,6 +164,12 @@
     <Content Include="Content\vendors\angular-bootstrap\ui-bootstrap.min.js" />
     <Content Include="Content\vendors\angular-cookies\angular-cookies.js" />
     <Content Include="Content\vendors\angular-cookies\angular-cookies.min.js" />
+    <Content Include="Content\vendors\angular-datepicker\angular-datepicker.css" />
+    <Content Include="Content\vendors\angular-datepicker\angular-datepicker.js" />
+    <Content Include="Content\vendors\angular-datepicker\angular-datepicker.min.css" />
+    <Content Include="Content\vendors\angular-datepicker\angular-datepicker.min.js" />
+    <Content Include="Content\vendors\angular-daterangepicker\angular-daterangepicker.js" />
+    <Content Include="Content\vendors\angular-daterangepicker\angular-daterangepicker.min.js" />
     <Content Include="Content\vendors\angular-file-upload\angular-file-upload.js" />
     <Content Include="Content\vendors\angular-file-upload\angular-file-upload.min.js" />
     <Content Include="Content\vendors\angular-loading-bar\loading-bar.css" />
@@ -181,6 +187,8 @@
     <Content Include="Content\vendors\angular\angular-csp.css" />
     <Content Include="Content\vendors\angular\angular.js" />
     <Content Include="Content\vendors\angular\angular.min.js" />
+    <Content Include="Content\vendors\bootstrap-daterangepicker\daterangepicker.css" />
+    <Content Include="Content\vendors\bootstrap-daterangepicker\daterangepicker.js" />
     <Content Include="Content\vendors\bootstrap\css\bootstrap-theme.css" />
     <Content Include="Content\vendors\bootstrap\css\bootstrap-theme.min.css" />
     <Content Include="Content\vendors\bootstrap\css\bootstrap.css" />
@@ -212,6 +220,8 @@
     <Content Include="Content\vendors\jquery\jquery.js" />
     <Content Include="Content\vendors\jquery\jquery.min.js" />
     <Content Include="Content\vendors\modernizr.js" />
+    <Content Include="Content\vendors\moment\moment-with-locales.js" />
+    <Content Include="Content\vendors\moment\moment-with-locales.min.js" />
     <Content Include="Content\vendors\morris\morris.css" />
     <Content Include="Content\vendors\morris\morris.js" />
     <Content Include="Content\vendors\raphael\raphael-min.js" />
@@ -267,8 +277,11 @@
     <Content Include="Scripts\spa\modules\common.core.js" />
     <Content Include="Scripts\spa\layout\topBar.directive.js" />
     <Content Include="Scripts\spa\directives\customPager.directive.js" />
+    <Content Include="Content\vendors\angular-daterangepicker\angular-daterangepicker.min.map" />
     <None Include="Scripts\_references.js" />
     <Content Include="Scripts\spa\modules\common.ui.js" />
+    <Content Include="Scripts\spa\movies\movies.html" />
+    <Content Include="Scripts\spa\movies\moviesCtrl.js" />
     <Content Include="Scripts\spa\services\apiService.js" />
     <Content Include="Scripts\spa\services\membershipService.js" />
     <Content Include="Scripts\spa\services\notificationService.js" />
@@ -286,7 +299,9 @@
     <Compile Include="App_Start\WebApiConfig.cs" />
     <Compile Include="Controllers\AccountController.cs" />
     <Compile Include="Controllers\CustomersController.cs" />
+    <Compile Include="Controllers\GenresController.cs" />
     <Compile Include="Controllers\HomeController.cs" />
+    <Compile Include="Controllers\MoviesController.cs" />
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>

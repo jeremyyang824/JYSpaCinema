@@ -45,14 +45,14 @@
                             <label class="control-label" for="dateOfBirth">Date of Birth</label>
                             <p class="input-group">
                                 <input type="text" class="form-control" name="dateOfBirth" ng-model="EditedCustomer.DateOfBirth"
-                                       uib-datepicker-popup="{{format}}"
-                                       is-open="datepicker.opened"
+                                       uib-datepicker-popup="yyyy-MM-dd"
+                                       is-open="dateOptions.isOpened"
                                        datepicker-options="dateOptions"
                                        datepicker-append-to-body="false"
                                        close-text="关闭"
                                        current-text="今天"
                                        clear-text="清除"
-                                       required required-message="'Date of birth is required'" />
+                                       required required-message="'Date of birth is required'"/>
                                 <span class="input-group-btn">
                                     <button type="button" class="btn btn-default" ng-click="openDatePicker($event)"> <i class="glyphicon glyphicon-calendar"></i></button>
                                 </span>
@@ -61,7 +61,6 @@
                     </div>
                 </div>
             </div>
-
         </div>
         <div class="panel-footer clearfix">
             <div class="pull-right">

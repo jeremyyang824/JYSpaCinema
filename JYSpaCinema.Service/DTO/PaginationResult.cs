@@ -1,24 +1,14 @@
-﻿using System.Collections.Generic;
+﻿using System;
+using System.Collections.Generic;
 using System.Linq;
 using JYSpaCinema.Domain;
+using JYSpaCinema.Domain.Entities;
 
 namespace JYSpaCinema.Service.DTO
 {
     //[DataContract]
     public class PaginationResult<T>
     {
-        /// <summary>
-        /// 当前页号（从1开始）
-        /// </summary>
-        //[DataMember]
-        public int CurrentPageIndex { get; set; }
-
-        /// <summary>
-        /// 分页容量
-        /// </summary>
-        //[DataMember]
-        public int PageSize { get; set; }
-
         /// <summary>
         /// 总记录数
         /// </summary>
@@ -29,18 +19,20 @@ namespace JYSpaCinema.Service.DTO
         /// 分页数据结果
         /// </summary>
         //[DataMember]
-        public List<T> Results { get; set; }
+        public IReadOnlyList<T> Results { get; set; }
 
-        public PaginationResult()
-        {
-        }
+        //public PaginationResult(IPagedList<T> list)
+        //{
+        //    this.CurrentPageIndex = list.CurrentPageIndex;
+        //    this.PageSize = list.PageSize;
+        //    this.TotalItemCount = list.TotalItemCount;
+        //    this.Results = list.ToList();
+        //}
 
-        public PaginationResult(IPagedList<T> list)
+        public PaginationResult(int totalCount, IReadOnlyList<T> items)
         {
-            this.CurrentPageIndex = list.CurrentPageIndex;
-            this.PageSize = list.PageSize;
-            this.TotalItemCount = list.TotalItemCount;
-            this.Results = list.ToList();
+            this.TotalItemCount = totalCount;
+            this.Results = items;
         }
     }
 }

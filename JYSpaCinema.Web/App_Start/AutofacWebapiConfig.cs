@@ -1,9 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Data.Entity;
-using System.Linq;
 using System.Reflection;
-using System.Web;
 using System.Web.Http;
 using Autofac;
 using Autofac.Integration.WebApi;
@@ -80,6 +78,14 @@ namespace JYSpaCinema.Web.App_Start
                .As<IRoleRepository>()
                .InstancePerRequest();
 
+            builder.RegisterType<GenreRepository>()
+                .As<IGenreRepository>()
+                .InstancePerRequest();
+
+            builder.RegisterType<MovieRepository>()
+                .As<IMovieRepository>()
+                .InstancePerRequest();
+
             //Domain Infrastructure
             builder.RegisterType<UnitOfWorkManager>()
                 .As<IUnitOfWorkManager>()
@@ -93,6 +99,14 @@ namespace JYSpaCinema.Web.App_Start
             builder.RegisterType<CustomerAppService>()
                 .AsSelf()
                 .InstancePerRequest();
+
+            builder.RegisterType<GenreAppService>()
+                .AsSelf()
+                .InstancePerRequest();
+
+            builder.RegisterType<MovieAppService>()
+               .AsSelf()
+               .InstancePerRequest();
 
             Container = builder.Build();
             return Container;

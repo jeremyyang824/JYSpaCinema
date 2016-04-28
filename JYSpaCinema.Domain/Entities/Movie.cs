@@ -64,6 +64,6 @@ namespace JYSpaCinema.Domain.Entities
         /// <summary>
         /// 库存列表
         /// </summary>
-        public virtual ICollection<Stock> Stocks { get; set; }
+        public virtual ICollection<Stock> Stocks { get; set; } = new List<Stock>();
     }
 }

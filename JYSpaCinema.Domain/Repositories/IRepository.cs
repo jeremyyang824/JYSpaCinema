@@ -12,15 +12,17 @@ namespace JYSpaCinema.Domain.Repositories
     {
         TEntity GetByKey(TKey id);
 
-        IQueryable<TEntity> GetAll(params Expression<Func<TEntity, object>>[] eager);
+        IQueryable<TEntity> GetAll(params Expression<Func<TEntity, dynamic>>[] eager);
 
-        IQueryable<TEntity> FindBy(Expression<Func<TEntity, bool>> predicate, params Expression<Func<TEntity, object>>[] eager);
+        /*
+        IQueryable<TEntity> FindBy(Expression<Func<TEntity, bool>> predicate, params Expression<Func<TEntity, dynamic>>[] eager);
 
         IPagedList<TEntity> FindByPager(
             Expression<Func<TEntity, bool>> predicate,
             int pageNumber, int pageSize,
-            IEnumerable<Tuple<Expression<Func<TEntity, object>>, SortOrder>> sortExpression,
-            params Expression<Func<TEntity, object>>[] eager);
+            IEnumerable<SortExpression<TEntity>> sortExpressions,
+            params Expression<Func<TEntity, dynamic>>[] eager);
+        */
 
         void Add(TEntity entity);
 

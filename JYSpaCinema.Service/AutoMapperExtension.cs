@@ -16,18 +16,18 @@ namespace JYSpaCinema.Service
             return (TResult)Mapper.Map(source, source.GetType(), typeof(TResult));
         }
 
-        public static PaginationResult<TResult> MapToPagination<TResult>(this IPagedList sourceList)
-        {
-            if (sourceList == null)
-                return null;
+        //public static PaginationResult<TResult> MapToPagination<TResult>(this IPagedList sourceList)
+        //{
+        //    if (sourceList == null)
+        //        return null;
 
-            return new PaginationResult<TResult>
-            {
-                CurrentPageIndex = sourceList.CurrentPageIndex,
-                PageSize = sourceList.PageSize,
-                TotalItemCount = sourceList.TotalItemCount,
-                Results = ((IEnumerable<object>)sourceList).Select(source => (TResult)Mapper.Map(source, source.GetType(), typeof(TResult))).ToList()
-            };
-        }
+        //    return new PaginationResult<TResult>
+        //    {
+        //        CurrentPageIndex = sourceList.CurrentPageIndex,
+        //        PageSize = sourceList.PageSize,
+        //        TotalItemCount = sourceList.TotalItemCount,
+        //        Results = ((IEnumerable<object>)sourceList).Select(source => (TResult)Mapper.Map(source, source.GetType(), typeof(TResult))).ToList()
+        //    };
+        //}
     }
 }

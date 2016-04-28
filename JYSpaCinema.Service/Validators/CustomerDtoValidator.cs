@@ -21,8 +21,9 @@ namespace JYSpaCinema.Service.Validators
                 .LessThan(DateTime.Now.AddYears(-16))
                 .WithMessage("Customer must be at least 16 years old.");
 
-            RuleFor(customer => customer.Mobile).NotEmpty().Matches(@"^\d{10}$")
-                .Length(10).WithMessage("Mobile phone must have 10 digits");
+            RuleFor(customer => customer.Mobile).NotEmpty()
+                .Matches(@"^\d{10}$")
+                .WithMessage("Mobile phone must have 10 digits");
 
             RuleFor(customer => customer.Email).NotEmpty().EmailAddress()
                 .WithMessage("Enter a valid Email address");

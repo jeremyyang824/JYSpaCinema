@@ -2682,6 +2682,9 @@ function($scope, $element, $attrs, $compile, $log, $parse, $window, $document, $
         if (angular.isNumber($scope.date)) {
           $scope.date = new Date($scope.date);
         }
+        if (angular.isString($scope.date)) {
+            $scope.date = parseDateString($scope.date);
+        }
 
         return dateParser.filter($scope.date, dateFormat);
       });
