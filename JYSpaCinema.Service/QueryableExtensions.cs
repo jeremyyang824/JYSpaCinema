@@ -52,7 +52,7 @@ namespace JYSpaCinema.Service
 
         public static IQueryable<T> WhereIf<T>(this IQueryable<T> query, Expression<Func<T, bool>> predicate)
         {
-            return predicate == null ? query : query.WhereIf(predicate);
+            return predicate == null ? query : query.Where(predicate);
         }
     }
 }
