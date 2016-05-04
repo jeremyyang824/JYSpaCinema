@@ -16,10 +16,12 @@ namespace JYSpaCinema.Web.Controllers
     public class MoviesController : ApiControllerBase
     {
         private readonly MovieAppService _movieAppService;
+        private readonly StockAppService _stockAppService;
 
-        public MoviesController(MovieAppService movieAppService)
+        public MoviesController(MovieAppService movieAppService, StockAppService stockAppService)
         {
             this._movieAppService = movieAppService;
+            this._stockAppService = stockAppService;
         }
 
         [AllowAnonymous]
@@ -79,6 +81,18 @@ namespace JYSpaCinema.Web.Controllers
             {
                 this._movieAppService.UpdateMovie(movie);
                 return request.CreateResponse(HttpStatusCode.OK);
+            });
+        }
+
+        [AllowAnonymous]
+        [HttpGet]
+        [Route("stocks/{id:int}")]
+        public HttpResponseMessage GetStocks(HttpRequestMessage request, int id)
+        {
+            return CreateHttpResponse(request, () =>
+            {
+                var stocks = this._stockAppService.GetMovieStock(id);
+                return request.CreateResponse<IEnumerable<StockDto>>(HttpStatusCode.OK, stocks);
             });
         }
     }

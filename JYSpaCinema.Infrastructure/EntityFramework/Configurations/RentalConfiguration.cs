@@ -12,6 +12,7 @@ namespace JYSpaCinema.Infrastructure.EntityFramework.Configurations
             Property(r => r.Status).IsRequired().HasMaxLength(10);
             Property(r => r.ReturnedDate).IsOptional();
 
+            HasRequired(r => r.Customer).WithMany().HasForeignKey(t => t.CustomerId);
             HasRequired(r => r.Stock).WithMany().HasForeignKey(t => t.StockId);
         }
     }

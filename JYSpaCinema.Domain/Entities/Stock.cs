@@ -25,5 +25,7 @@ namespace JYSpaCinema.Domain.Entities
         /// 是否可用
         /// </summary>
         public bool IsAvailable { get; set; }
+
+        public virtual ICollection<Rental> Rentals { get; set; }
     }
 }

@@ -41,5 +41,10 @@ namespace JYSpaCinema.Domain.Entities
         /// 注册日期
         /// </summary>
         public DateTime RegistrationDate { get; set; }
+
+        public string GetFullName()
+        {
+            return string.Format("{0} {1}", this.FirstName, this.LastName);
+        }
     }
 }

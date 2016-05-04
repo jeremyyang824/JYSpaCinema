@@ -90,12 +90,18 @@
     <Compile Include="AppServices\CustomerAppService.cs" />
     <Compile Include="AppServices\GenreAppService.cs" />
     <Compile Include="AppServices\MovieAppService.cs" />
+    <Compile Include="AppServices\RentalAppService.cs" />
+    <Compile Include="AppServices\StockAppService.cs" />
     <Compile Include="AutoMapperExtension.cs" />
     <Compile Include="DTO\CustomerDto.cs" />
     <Compile Include="DTO\GenreDto.cs" />
     <Compile Include="DTO\MovieDto.cs" />
     <Compile Include="DTO\PaginationResult.cs" />
     <Compile Include="DTO\RegistrationInputDto.cs" />
+    <Compile Include="DTO\RentalDto.cs" />
+    <Compile Include="DTO\RentalHistoryDto.cs" />
+    <Compile Include="DTO\StockDto.cs" />
+    <Compile Include="DTO\TotalRentalHistoryDto.cs" />
     <Compile Include="QueryableExtensions.cs" />
     <Compile Include="Uow\IUnitOfWork.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
@@ -107,6 +113,7 @@
     <Compile Include="DTO\LoginInputDto.cs" />
     <Compile Include="Validators\MovieDtoValidator.cs" />
     <Compile Include="Validators\RegistrationInputDtoValidator.cs" />
+    <Compile Include="Validators\StockDtoValidator.cs" />
   </ItemGroup>
   <ItemGroup>
     <ProjectReference Include="..\JYSpaCinema.Domain\JYSpaCinema.Domain.csproj">

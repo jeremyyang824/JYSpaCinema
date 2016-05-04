@@ -86,6 +86,14 @@ namespace JYSpaCinema.Web.App_Start
                 .As<IMovieRepository>()
                 .InstancePerRequest();
 
+            builder.RegisterType<StockRepository>()
+                .As<IStockRepository>()
+                .InstancePerRequest();
+
+            builder.RegisterType<RentalRepository>()
+                .As<IRentalRepository>()
+                .InstancePerRequest();
+
             //Domain Infrastructure
             builder.RegisterType<UnitOfWorkManager>()
                 .As<IUnitOfWorkManager>()
@@ -107,6 +115,14 @@ namespace JYSpaCinema.Web.App_Start
             builder.RegisterType<MovieAppService>()
                .AsSelf()
                .InstancePerRequest();
+
+            builder.RegisterType<RentalAppService>()
+                .AsSelf()
+                .InstancePerRequest();
+
+            builder.RegisterType<StockAppService>()
+                .AsSelf()
+                .InstancePerRequest();
 
             Container = builder.Build();
             return Container;

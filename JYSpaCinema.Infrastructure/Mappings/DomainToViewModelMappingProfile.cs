@@ -21,6 +21,14 @@ namespace JYSpaCinema.Infrastructure.Mappings
                 .ForMember(vm => vm.IsAvailable, map => map.MapFrom(m => m.Stocks.Any(s => s.IsAvailable)))
                 .ForMember(vm => vm.NumberOfStocks, map => map.MapFrom(m => m.Stocks.Count))
                 .ForMember(vm => vm.Image, map => map.MapFrom(m => string.IsNullOrEmpty(m.Image) == true ? "unknown.jpg" : m.Image));
+
+            mapperConfig.CreateMap<Rental, RentalHistoryDto>()
+                .ForMember(vm => vm.Customer, map => map.MapFrom(m => m.Customer.GetFullName()));
+
+            mapperConfig.CreateMap<Rental, RentalDto>()
+                .ForMember(vm => vm.Customer, map => map.MapFrom(m => m.Customer.GetFullName()));
+
+            mapperConfig.CreateMap<Stock, StockDto>();
         }
     }
 }

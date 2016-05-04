@@ -12,6 +12,11 @@ namespace JYSpaCinema.Domain.Entities
 
         public int CustomerId { get; set; }
 
+        /// <summary>
+        /// 顾客信息
+        /// </summary>
+        public virtual Customer Customer { get; set; }
+
         public int StockId { get; set; }
         /// <summary>
         /// 库存信息

@@ -232,7 +232,7 @@ namespace JYSpaCinema.Infrastructure.Migrations
                 new Movie()
                 {   Title="True Detective",
                     Image ="truedetective.jpg",
-                    GenreId = 6,
+                    GenreId = 7,
                     Director ="Nic Pizzolatto",
                     Writer="Bill Bannerman",
                     Producer="Richard Brown",
@@ -302,7 +302,6 @@ namespace JYSpaCinema.Infrastructure.Migrations
                 new Genre() { Name = "Action" },
                 new Genre() { Name = "Horror" },
                 new Genre() { Name = "Romance" },
-                new Genre() { Name = "Comedy" },
                 new Genre() { Name = "Crime" },
             };
 

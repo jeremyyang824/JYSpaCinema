@@ -54,6 +54,7 @@
     <Compile Include="Repositories\ICustomerRepository.cs" />
     <Compile Include="Repositories\IGenreRepository.cs" />
     <Compile Include="Repositories\IMovieRepository.cs" />
+    <Compile Include="Repositories\IRentalRepository.cs" />
     <Compile Include="Repositories\IRepository.cs" />
     <Compile Include="Repositories\IRoleRepository.cs" />
     <Compile Include="Repositories\IStockRepository.cs" />

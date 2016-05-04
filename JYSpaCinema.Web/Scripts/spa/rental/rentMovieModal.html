@@ -1,0 +1,41 @@
+﻿
+
+<div class="panel panel-primary" style="margin:0">
+    <div class="panel-heading">
+        租借 {{movie.Title}}
+    </div>
+    <div class="panel-body">
+        <form class="form-horizontal">
+            <div class="form-group">
+                <div class="col-xs-8 selectContainer">
+                    <label class="control-label">可用库存</label>
+                    <select ng-model="selectedStockItem" class="form-control black" ng-options="option.ID as option.ID for option in stockItems" required></select>
+                </div>
+            </div>
+            <div class="form-group">
+                <div class="col-xs-8">
+                    <label class="control-label">选择顾客</label>
+                    <angucomplete-alt id="member"
+                                      placeholder="查询顾客"
+                                      pause="200"
+                                      selected-object="selectCustomer"
+                                      input-changed="selectionChanged"
+                                      remote-url="/api/customers?filter="
+                                      remote-url-data-field=""
+                                      title-field="FirstName,LastName"
+                                      description-field="Email"
+                                      input-class="form-control form-control-small"
+                                      match-class="red"
+                                      text-searching="查询中..."
+                                      text-no-results="未找到匹配顾客" />
+                </div>
+            </div>
+        </form>
+    </div>
+    <div class="panel-footer clearfix">
+        <div class="pull-right">
+            <button type="button" class="btn btn-danger" ng-click="cancelRental()">取消</button>
+            <button type="button" class="btn btn-primary" ng-click="rentMovie()" ng-disabled="!isEnabled">租借</button>
+        </div>
+    </div>
+</div>
